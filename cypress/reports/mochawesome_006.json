@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-10-22T22:39:29.816Z",
+    "end": "2024-10-22T22:39:34.202Z",
+    "duration": 4386,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b2450b77-be20-46f5-8686-9762abddad3f",
+      "title": "",
+      "fullFile": "cypress/e2e/Credit Bureaus/getCreditReportfromCRCCreditBureau.cy.js",
+      "file": "cypress/e2e/Credit Bureaus/getCreditReportfromCRCCreditBureau.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d7bc2d81-6728-4465-a16e-69a87526f44f",
+          "title": "GET /creditbureaus/crc/:bvn",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return status 200 and valid credit report",
+              "fullTitle": "GET /creditbureaus/crc/:bvn should return status 200 and valid credit report",
+              "timedOut": null,
+              "duration": 547,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://adjutor.lendsqr.com/v2/creditbureaus/crc/22227628441',\n  headers: {\n    Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}`\n  }\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(200);\n  expect(response.body.data.nano_consumer_profile.consumer_details.name).to.eq('CHIMEZIE JEPHTHAH SUNDAY');\n  expect(response.body.message).to.eq('Successful');\n});",
+              "err": {},
+              "uuid": "29f6c802-7a70-4a37-8308-cec53d9ce448",
+              "parentUUID": "d7bc2d81-6728-4465-a16e-69a87526f44f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return error for invalid BVN",
+              "fullTitle": "GET /creditbureaus/crc/:bvn should return error for invalid BVN",
+              "timedOut": null,
+              "duration": 3775,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://adjutor.lendsqr.com/v2/creditbureaus/crc/22227628442',\n  failOnStatusCode: false,\n  headers: {\n    Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}`\n  }\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(400);\n  expect(response.body.message).to.eq('The CRC credit bureau has no data for the provided bvn.');\n});",
+              "err": {},
+              "uuid": "07ede4f0-a046-4f97-b63e-427d8b4ee8ac",
+              "parentUUID": "d7bc2d81-6728-4465-a16e-69a87526f44f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "29f6c802-7a70-4a37-8308-cec53d9ce448",
+            "07ede4f0-a046-4f97-b63e-427d8b4ee8ac"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4322,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

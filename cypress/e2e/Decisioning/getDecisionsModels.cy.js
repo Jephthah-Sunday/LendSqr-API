@@ -1,0 +1,27 @@
+describe('GET /decisioning/models', () => {
+    it('should return status 200 and fetch all decision models', () => {
+      cy.request({
+        method: 'GET',
+        url: 'https://adjutor.lendsqr.com/v2/decisioning/models',
+        headers: { Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}` }
+      }).then(response => {
+        cy.log(`Response Time: ${response.duration} ms`);
+        expect(response.status).to.eq(200);
+        expect(response.body.message).to.eq('Successful');
+        expect(response.body.data).to.be.an('array');
+      });
+    });
+  
+    it('should return error for unauthorized access', () => {
+      cy.request({
+        method: 'GET',
+        url: 'https://adjutor.lendsqr.com/v2/decisioning/models',
+        failOnStatusCode: false
+      }).then(response => {
+        cy.log(`Response Time: ${response.duration} ms`);
+        expect(response.status).to.eq(401);
+        expect(response.body.message).to.eq("We couldn't verify your access. Please check your authorization");
+      });
+    });
+  });
+  
