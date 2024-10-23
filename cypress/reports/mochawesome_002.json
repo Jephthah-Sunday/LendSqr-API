@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-10-22T22:39:21.211Z",
+    "end": "2024-10-22T22:39:22.243Z",
+    "duration": 1032,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a035b3c2-4cf5-49c2-9bee-706b3d8e752e",
+      "title": "",
+      "fullFile": "cypress/e2e/Core Services/authenticateUser.cy.js",
+      "file": "cypress/e2e/Core Services/authenticateUser.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "df217f8c-a048-4d04-9f90-d1cae77cce29",
+          "title": "POST /customers/auth - Authenticate User",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return status 200 and generate x-access-token upon successful authentication",
+              "fullTitle": "POST /customers/auth - Authenticate User should return status 200 and generate x-access-token upon successful authentication",
+              "timedOut": null,
+              "duration": 1005,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://adjutor.lendsqr.com/v2/customers/auth',\n  headers: {\n    Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}`,\n    'Content-Type': 'application/json'\n  },\n  body: {\n    email: 'sundaychimezie96@gmail.com',\n    password: 'P@sswor0d'\n  }\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('x-access-token');\n  expect(response.body.token_type).to.eq('Bearer');\n});",
+              "err": {
+                "message": "AssertionError: expected {} to have property 'x-access-token'",
+                "estack": "AssertionError: expected {} to have property 'x-access-token'\n    at Context.eval (webpack://lendsqr-api/./cypress/e2e/Core Services/authenticateUser.cy.js:17:38)",
+                "diff": null
+              },
+              "uuid": "3b380f05-c3cc-4aa8-96c7-53493ed90a76",
+              "parentUUID": "df217f8c-a048-4d04-9f90-d1cae77cce29",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "3b380f05-c3cc-4aa8-96c7-53493ed90a76"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1005,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-10-22T22:38:45.280Z",
+    "end": "2024-10-22T22:39:14.324Z",
+    "duration": 29044,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ed7b47a8-0aef-40a5-bc2d-43fae974c107",
+      "title": "",
+      "fullFile": "cypress/e2e/Validation/bvnConsent.cy.js",
+      "file": "cypress/e2e/Validation/bvnConsent.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "edb3f622-486f-4fd9-9897-99adcddc6cfe",
+          "title": "POST /verification/bvn/:bvn",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return status 200 and OTP request message for valid contact",
+              "fullTitle": "POST /verification/bvn/:bvn should return status 200 and OTP request message for valid contact",
+              "timedOut": null,
+              "duration": 20012,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://adjutor.lendsqr.com/v2/verification/bvn/22227628441',\n  body: {\n    contact: '08086916648'\n  },\n  headers: {\n    Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}`\n  },\n  timeout: 80000\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(200);\n  expect(response.body.message).to.eq('Please provide the otp sent to your contact details');\n});",
+              "err": {},
+              "uuid": "84d75758-5908-45b2-8006-d5c7b0c3d687",
+              "parentUUID": "edb3f622-486f-4fd9-9897-99adcddc6cfe",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return error for invalid BVN",
+              "fullTitle": "POST /verification/bvn/:bvn should return error for invalid BVN",
+              "timedOut": null,
+              "duration": 8952,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://adjutor.lendsqr.com/v2/verification/bvn/22227628442',\n  body: {\n    contact: '08086916648'\n  },\n  failOnStatusCode: false,\n  headers: {\n    Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}`\n  },\n  timeout: 80000\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(400);\n  expect(response.body.message).to.eq(\"Enter a valid BVN number.\");\n});",
+              "err": {},
+              "uuid": "486112f7-755a-4a63-928f-c6a0f612dbcf",
+              "parentUUID": "edb3f622-486f-4fd9-9897-99adcddc6cfe",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "84d75758-5908-45b2-8006-d5c7b0c3d687",
+            "486112f7-755a-4a63-928f-c6a0f612dbcf"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 28964,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

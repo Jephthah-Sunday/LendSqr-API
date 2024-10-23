@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-10-22T22:39:43.713Z",
+    "end": "2024-10-22T22:39:44.598Z",
+    "duration": 885,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "82b771d3-5103-46ec-8af5-405e0b34ba69",
+      "title": "",
+      "fullFile": "cypress/e2e/Direct Debit/getAllBanks.cy.js",
+      "file": "cypress/e2e/Direct Debit/getAllBanks.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9c55d502-9b9a-4b6d-94ed-a654433a25b0",
+          "title": "GET /direct-debit/banks",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return status 200 and fetch the list of banks",
+              "fullTitle": "GET /direct-debit/banks should return status 200 and fetch the list of banks",
+              "timedOut": null,
+              "duration": 534,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://adjutor.lendsqr.com/v2/banks',\n  headers: {\n    Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}`\n  }\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(200);\n  expect(response.body.message).to.eq('Successful');\n  expect(response.body.data).to.be.an('array');\n});",
+              "err": {},
+              "uuid": "9e0a4c70-b7a5-46ac-930b-1e85e0229764",
+              "parentUUID": "9c55d502-9b9a-4b6d-94ed-a654433a25b0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return error for unauthorized access",
+              "fullTitle": "GET /direct-debit/banks should return error for unauthorized access",
+              "timedOut": null,
+              "duration": 297,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://adjutor.lendsqr.com/v2/banks',\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(401);\n  expect(response.body.message).to.eq(\"We couldn't verify your access. Please check your authorization\");\n});",
+              "err": {},
+              "uuid": "557b3ba4-3604-4dae-a6d8-480843bd7b0e",
+              "parentUUID": "9c55d502-9b9a-4b6d-94ed-a654433a25b0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9e0a4c70-b7a5-46ac-930b-1e85e0229764",
+            "557b3ba4-3604-4dae-a6d8-480843bd7b0e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 831,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

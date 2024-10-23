@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-10-22T22:39:25.930Z",
+    "end": "2024-10-22T22:39:26.799Z",
+    "duration": 869,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1dd47671-25ac-4030-9fb2-90b99006dd9e",
+      "title": "",
+      "fullFile": "cypress/e2e/Decisioning/getDecisionsModels.cy.js",
+      "file": "cypress/e2e/Decisioning/getDecisionsModels.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5106189a-6e38-4c60-a61c-e26105a28f04",
+          "title": "GET /decisioning/models",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return status 200 and fetch all decision models",
+              "fullTitle": "GET /decisioning/models should return status 200 and fetch all decision models",
+              "timedOut": null,
+              "duration": 457,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://adjutor.lendsqr.com/v2/decisioning/models',\n  headers: {\n    Authorization: `Bearer ${Cypress.env('API_KEY_TWO')}`\n  }\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(200);\n  expect(response.body.message).to.eq('Successful');\n  expect(response.body.data).to.be.an('array');\n});",
+              "err": {},
+              "uuid": "d264b266-19d9-4622-851d-a4f233ce274f",
+              "parentUUID": "5106189a-6e38-4c60-a61c-e26105a28f04",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return error for unauthorized access",
+              "fullTitle": "GET /decisioning/models should return error for unauthorized access",
+              "timedOut": null,
+              "duration": 386,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://adjutor.lendsqr.com/v2/decisioning/models',\n  failOnStatusCode: false\n}).then(response => {\n  cy.log(`Response Time: ${response.duration} ms`);\n  expect(response.status).to.eq(401);\n  expect(response.body.message).to.eq(\"We couldn't verify your access. Please check your authorization\");\n});",
+              "err": {},
+              "uuid": "3de698be-d5fe-4a24-a0c0-7071fb4b418e",
+              "parentUUID": "5106189a-6e38-4c60-a61c-e26105a28f04",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d264b266-19d9-4622-851d-a4f233ce274f",
+            "3de698be-d5fe-4a24-a0c0-7071fb4b418e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 843,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
